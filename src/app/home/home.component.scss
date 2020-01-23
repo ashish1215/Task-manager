@@ -1,0 +1,15 @@
+.task{
+   display: flex;
+   align-items: center;
+   justify-content: center; 
+  .task-title{
+    width: 100%;
+    height: 10%;
+    background-color: antiquewhite;  
+    font-size: x-large
+  } 
+
+  .task-time{
+      font-size: large
+  }
+}

@@ -1,0 +1,17 @@
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+
+<div class="box">
+<h1>Dashboard</h1>
+
+<input type="email" name="email" value="email" onFocus="field_focus(this, 'email');" class="email"  [formControl]="emailFormControl" />
+  
+<input type="password" name="email" value="email" onFocus="field_focus(this, 'email');"  class="email" [formControl]="passwordFormControl" />
+  
+<div class="btn" (click)="onSignIn()">Sign In</div>
+
+<div id="btn2">Sign Up</div>
+  
+</div> <!-- End Box -->
+
+<div id="error" *ngIf="error"> Incorrect credentials </div>
