@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { increment, decrement, reset } from '../store/home.action';
@@ -16,11 +15,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   counter: number;
   subscriptions: Subscription[] = [];
   tasks = [];
+  data: any;
 
   constructor(private store: Store<any>, private router: Router) {
-    let data:any = this.router.getCurrentNavigation().extras
-    this.tasks = data.Tasks;
-   }
+    this.data = this.router.getCurrentNavigation().extras
+    if(this.data.Tasks){
+      this.tasks = this.data.Tasks;
+    } else {
+      this.data = JSON.parse(localStorage.getItem('user'))
+      this.tasks = JSON.parse(localStorage.getItem('user')).Tasks
+    }
+    
+  }
 
   onMenuClick($event) {
     
@@ -33,5 +39,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     
   }
+  
 
 }

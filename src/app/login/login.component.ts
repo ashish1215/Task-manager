@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSignIn(){
-    console.log(this.emailFormControl.value, this.passwordFormControl.value)
     this.loginService.login(this.emailFormControl.value, this.passwordFormControl.value).subscribe((response) => {
       if(response) {
+        localStorage.setItem('user', JSON.stringify(response));
         this.router.navigate(['/home'], response)
         this.error = null;
       } },

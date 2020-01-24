@@ -1,6 +1,15 @@
-<div *ngFor="let task of tasks" class="task">
-    <div class="task-title"> {{task.title}}</div>
-    <div class="task-time"> {{task.createdAt}} </div>
-</div>
+<div class="header"><span>Hi {{data.username}} ! Please Find your tasks for today</span></div>
 
-<app-side-menu (onClick)="onMenuClick($event)" ></app-side-menu>
+<div *ngFor="let task of tasks" class="task container">
+    <div>
+    <div class="task-title"> {{task.title}}</div>
+    <div class="task-time"> Created at: {{task.createdAt | date:'short'}} </div>
+    </div>
+    <div class="status">  
+        <mat-select [(ngModel)]="tasks" name="food">
+            <mat-option *ngFor="let food of tasks" [value]="food.title">
+            {{food.title}}
+        </mat-option>
+        </mat-select>
+    </div>
+</div>

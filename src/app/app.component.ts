@@ -15,6 +15,5 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.router.navigate(['/login'])
   }
 }
