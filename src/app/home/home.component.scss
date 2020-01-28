@@ -25,6 +25,11 @@
   }
 }
 
+
+button{
+  width: 130px
+}
+
 .add-icon{
   display: flex;
   justify-content: flex-end;
@@ -34,15 +39,3 @@
   cursor: pointer;
 }
 
-.header{
-  width: 100%;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: white;
-  background-color: coral;
-  span {
-    margin-left:25px;
-  }
-}

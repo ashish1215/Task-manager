@@ -1,6 +1,4 @@
-<div class="header">
-    <span>Hi {{data.username}} ! Please find your tasks for today</span>
-</div>
+<app-header [username]="this.data.username"></app-header>
 
 <div class="task container"><button class="btn btn-primary add-icon"  matTooltip="Create new task"> <i class="material-icons" >add_circle</i> Add Task </button></div>
 <div *ngFor="let task of tasks; let taskIndex = index" class="task container">
