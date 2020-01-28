@@ -15,5 +15,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    if(JSON.parse(localStorage.getItem('user'))) {
+      this.router.navigate(['home'], JSON.parse(localStorage.getItem('user')))
+    }else {
+      this.router.navigate(['login'])
+    }
   }
 }
