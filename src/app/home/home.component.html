@@ -1,15 +1,21 @@
-<div class="header"><span>Hi {{data.username}} ! Please Find your tasks for today</span></div>
+<div class="header">
+    <span>Hi {{data.username}} ! Please find your tasks for today</span>
+    <div class="add-icon" matTooltip="Create new task"> <i class="material-icons" >add_circle</i> </div>
+</div>
 
-<div *ngFor="let task of tasks" class="task container">
+<div *ngFor="let task of tasks; let taskIndex = index" class="task container">
     <div>
-    <div class="task-title"> {{task.title}}</div>
-    <div class="task-time"> Created at: {{task.createdAt | date:'short'}} </div>
+        <div class="task-title"> {{task.title}}</div>
+        <div class="task-time"> Created at: {{task.createdAt | date:'short'}} </div>
     </div>
-    <div class="status">  
-        <mat-select [(ngModel)]="tasks" name="food">
-            <mat-option *ngFor="let food of tasks" [value]="food.title">
-            {{food.title}}
-        </mat-option>
-        </mat-select>
+    <div class="status">
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" id="taskIndex" data-toggle="dropdown">
+              {{task.currentStatus}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let status of statuses; let i = index" (click)="onStatusClick(i, taskIndex)">{{status}}</a>
+            </div>
+          </div>
     </div>
 </div>
