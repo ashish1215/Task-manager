@@ -5,20 +5,9 @@ import { increment, decrement, reset } from '../store/home.action';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from './home-service.service';
 import { MatSnackBar, MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
-
-
-@Component({
-  selector: 'snackbar',
-  templateUrl: 'snackbar-template.html',
-  styles: ['message { display: flex; align-items:center; justify-content:center }']
-})
-export class SnackBar {
-  message : string = ""
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any){
-     this.message = data.message;
-  }
-}
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../shared/dialog/dialog.component';
+import { SnackBar } from '../shared/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<any>,
     private _snackBar: MatSnackBar,
-    private router: Router, private homeService: HomeService) {
+    private router: Router, private homeService: HomeService,
+    public dialog: MatDialog) {
     this.data = this.router.getCurrentNavigation().extras
     if(this.data.Tasks){
       this.tasks = this.data.Tasks;
@@ -51,6 +41,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._snackBar.openFromComponent(SnackBar, {
       duration: 5000,
       data: {message: "Status updated!"}
+    });
+  }
+
+
+  createNew(){
+    this.openDialog()
+  }
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, { 
+      height: '600px',
+      width: '900px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 

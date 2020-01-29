@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent, SnackBar } from './home/home.component';
+import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { StoreModule } from '@ngrx/store';
@@ -12,8 +12,11 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HeaderComponent } from './header/header.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SharedModule } from './shared/shared.module';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { SnackBar } from './shared/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,11 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     SideMenuComponent,
     LoginComponent,
-    SnackBar,
     HeaderComponent
   ],
   entryComponents:[
-    SnackBar
+    SnackBar,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     FormsModule,
     MatSelectModule,
-    MatSnackBarModule,
+    MatDialogModule,
+    SharedModule,
     MatTooltipModule,
     StoreModule.forRoot({ count: counterReducer }),
     BrowserAnimationsModule

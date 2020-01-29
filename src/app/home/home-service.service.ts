@@ -14,6 +14,10 @@ export class HomeService {
 
   }
 
+  createTask(payload: any): Observable<any> {
+    return this.httpService.post(this.url + 'create', payload)
+  }
+
   updateStatus(payload: any): Observable<any> {
     return this.httpService.put(this.url + 'update', payload)
   }
